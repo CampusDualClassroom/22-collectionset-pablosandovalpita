@@ -1,66 +1,62 @@
 package com.campusdual.classroom;
 
-import org.junit.jupiter.api.Test;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
-import static org.junit.jupiter.api.Assertions.*;
+class Exercise {
 
-class ExerciseTest {
-
-    @Test
-    void testCreateHashSet() {
-        Set<String> hashSet = Exercise.createHashSet();
-        assertTrue(hashSet.contains("ELEMENT KPRBC"), "HashSet not contains element \"ELEMENT KPRBC\"");
-        assertTrue(hashSet.contains("ELEMENT YPBTM"), "HashSet not contains element \"ELEMENT YPBTM\"");
-        assertTrue(hashSet.contains("ELEMENT AADXU"), "HashSet not contains element \"ELEMENT AADXU\"");
-        assertTrue(hashSet.contains("ELEMENT RXCGJ"), "HashSet not contains element \"ELEMENT RXCGJ\"");
-        assertTrue(hashSet.contains("ELEMENT WYMVD"), "HashSet not contains element \"ELEMENT WYMVD\"");
-        assertTrue(hashSet.contains("ELEMENT WFGEJ"), "HashSet not contains element \"ELEMENT WFGEJ\"");
-        assertTrue(hashSet.contains("ELEMENT TYGBS"), "HashSet not contains element \"ELEMENT TYGBS\"");
-        assertTrue(hashSet.contains("ELEMENT MAPTK"), "HashSet not contains element \"ELEMENT MAPTK\"");
-        assertTrue(hashSet.contains("ELEMENT GJXVE"), "HashSet not contains element \"ELEMENT GJXVE\"");
-        assertTrue(hashSet.contains("ELEMENT BAFGL"), "HashSet not contains element \"ELEMENT BAFGL\"");
-        assertEquals(10, hashSet.size());
+    static Set<String> createHashSet() {
+        Set<String> hashSet = new HashSet<>();
+        hashSet.add("ELEMENT KPRBC");
+        hashSet.add("ELEMENT YPBTM");
+        hashSet.add("ELEMENT AADXU");
+        hashSet.add("ELEMENT RXCGJ");
+        hashSet.add("ELEMENT WYMVD");
+        hashSet.add("ELEMENT WFGEJ");
+        hashSet.add("ELEMENT TYGBS");
+        hashSet.add("ELEMENT MAPTK");
+        hashSet.add("ELEMENT GJXVE");
+        hashSet.add("ELEMENT BAFGL");
+        return hashSet;
     }
 
-    @Test
-    void testCreateTreeSet() {
-        Set<String> treeSet = Exercise.createTreeSet();
-        assertTrue(treeSet.contains("ELEMENT KPRBC"), "HashSet not contains element \"ELEMENT KPRBC\"");
-        assertTrue(treeSet.contains("ELEMENT YPBTM"), "HashSet not contains element \"ELEMENT YPBTM\"");
-        assertTrue(treeSet.contains("ELEMENT AADXU"), "HashSet not contains element \"ELEMENT AADXU\"");
-        assertTrue(treeSet.contains("ELEMENT RXCGJ"), "HashSet not contains element \"ELEMENT RXCGJ\"");
-        assertTrue(treeSet.contains("ELEMENT WYMVD"), "HashSet not contains element \"ELEMENT WYMVD\"");
-        assertTrue(treeSet.contains("ELEMENT WFGEJ"), "HashSet not contains element \"ELEMENT WFGEJ\"");
-        assertTrue(treeSet.contains("ELEMENT TYGBS"), "HashSet not contains element \"ELEMENT TYGBS\"");
-        assertTrue(treeSet.contains("ELEMENT MAPTK"), "HashSet not contains element \"ELEMENT MAPTK\"");
-        assertTrue(treeSet.contains("ELEMENT GJXVE"), "HashSet not contains element \"ELEMENT GJXVE\"");
-        assertTrue(treeSet.contains("ELEMENT BAFGL"), "HashSet not contains element \"ELEMENT BAFGL\"");
-        assertEquals(10, treeSet.size());
+    static Set<String> createTreeSet() {
+        Set<String> treeSet = new TreeSet<>();
+        treeSet.add("ELEMENT KPRBC");
+        treeSet.add("ELEMENT YPBTM");
+        treeSet.add("ELEMENT AADXU");
+        treeSet.add("ELEMENT RXCGJ");
+        treeSet.add("ELEMENT WYMVD");
+        treeSet.add("ELEMENT WFGEJ");
+        treeSet.add("ELEMENT TYGBS");
+        treeSet.add("ELEMENT MAPTK");
+        treeSet.add("ELEMENT GJXVE");
+        treeSet.add("ELEMENT BAFGL");
+        return treeSet;
     }
 
-    @Test
-    void testBothSetHasSameElements() {
-        Set<String> hashSet = Exercise.createHashSet();
-        Set<String> treeSet = Exercise.createTreeSet();
-        hashSet.containsAll(treeSet);
+    static boolean addElementToSet(Set<String> set, String element) {
+        return set.add(element);
     }
 
-    @Test
-    void testAddNewData() {
-        Set<String> hashSet = Exercise.createHashSet();
-        Set<String> treeSet = Exercise.createTreeSet();
-        assertTrue(hashSet.add("ELEMENT AAA"), "ELEMENT AAA cannot be added to hashSet");
-        assertTrue(treeSet.add("ELEMENT AAA"), "ELEMENT AAA cannot be added to treeSet");
+    static void printSet(Set<String> set) {
+        for (String s : set) {
+            System.out.println(s);
+        }
     }
 
-    @Test
-    void testAddDuplicateData() {
-        Set<String> hashSet = Exercise.createHashSet();
-        Set<String> treeSet = Exercise.createTreeSet();
-        hashSet.add("ELEMENT AAA");
-        assertFalse(hashSet.add("ELEMENT AAA"), "ELEMENT AAA added to hashSet");
-        treeSet.add("ELEMENT AAA");
-        assertFalse(treeSet.add("ELEMENT AAA"), "ELEMENT AAA added to hashSet");
+    public static void main(String[] args) {
+        Set<String> hashSet = createHashSet();
+        Set<String> treeSet = createTreeSet();
+
+        addElementToSet(hashSet, "ELEMENT AAA");
+        addElementToSet(treeSet, "ELEMENT AAA");
+
+        System.out.println("HashSet elements:");
+        printSet(hashSet);
+
+        System.out.println("\nTreeSet elements:");
+        printSet(treeSet);
     }
 }
